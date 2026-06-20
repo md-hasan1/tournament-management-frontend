@@ -46,8 +46,6 @@ public/sitemap*.xml.gz
 *.tsbuildinfo
 next-env.d.ts
 config.bat
-.env.local
 .env.development.local
 .env.test.local
 .env.production.local
-.env 
