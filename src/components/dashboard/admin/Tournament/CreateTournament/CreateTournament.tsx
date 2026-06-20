@@ -200,16 +200,30 @@ export default function CreateTournamentPage() {
     } catch (error: any) {
       let errorMsg = "Failed to create tournament";
 
-      if (error?.data?.errorSources && Array.isArray(error.data.errorSources) && error.data.errorSources.length > 0) {
-        errorMsg = error.data.errorSources.map((err: any) => err.message).join(", ");
-      } else if (error?.data?.message) {
-        errorMsg = error.data.message;
-      } else if (error?.message) {
-        errorMsg = error.message;
-      }
+      console.log(error);
+      console.log(errorMsg);
 
+      // if (
+      //   error?.data?.errorSources &&
+      //   Array.isArray(error.data.errorSources) &&
+      //   error.data.errorSources.length > 0
+      // ) {
+      //   errorMsg = error.data.errorSources
+      //     .map((err: any) => err.message)
+      //     .join(", ");
+      // } else if (error?.data?.message) {
+      //   errorMsg = error.data.message;
+      // } else if (error?.message) {
+      //   errorMsg = error.message;
+      // }
+      if (error?.data?.message) {
+        // console.log("error.data.message:", error.data.message);
+        errorMsg = error.data.message;
+      }
+  //  console.log("errorMsg:", errorMsg);
+      toast.error(`Tournament creation failed: ${errorMsg}`);
       setErrorMessage(errorMsg);
-      toast.error(errorMsg);
+   
       console.error("Tournament creation error:", error);
     }
   };
@@ -664,7 +678,7 @@ export default function CreateTournamentPage() {
                   />
                 </div>
               </div>
-              
+
               {/* Division Setup */}
               <div>
                 <label className="text-gray-400 text-sm font-semibold mb-4 block">
