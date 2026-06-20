@@ -1,169 +1,92 @@
-# next-redux-starter — Next.js + TypeScript + Redux + shadcn-style Boilerplate
+# Tournament Management Frontend
 
-This repository is a lightweight Next.js boilerplate that demonstrates a recommended folder structure and wiring for:
+Welcome to the **Tournament Management Frontend** project! This is a modern, responsive, and highly interactive web application designed to handle tournament operations, manage user dashboards, and provide a seamless experience for participants and organizers.
 
-- Next.js 16 + React 19
-- Redux Toolkit + React-Redux (with `redux-persist`)
-- shadcn-style component organization (component-driven UI under `src/components` / `src/components/ui`)
-- Tailwind CSS and utility-first styling
+## 📖 Project Overview
 
-Use this starter when you want a modern Next.js app scaffolded with a predictable folder layout and ready-to-use Redux integration.
+The **Tournament Management Frontend** is a robust Next.js application built with the App Router. It serves as the user-facing interface for managing tournaments, offering dedicated layouts for authentication, public pages, and secure user dashboards. The project emphasizes a clean, component-driven architecture, persistent state management, and a premium user experience with smooth animations and interactive UI elements.
 
-## Quick links
+## ✨ Feature List
 
-- Package manifest: `package.json`
-- Environment: `.env` (dev/prod base URLs)
-- App entry: `src/app/layout.tsx` and the `src/app/(commonLayout)` area
+- **User Authentication**: Secure login and registration flows with a dedicated authentication layout.
+- **Interactive Dashboard**: A comprehensive dashboard for users and admins to manage their tournament activities, profiles, and statistics.
+- **Payment Integration**: Seamless and secure payment processing integrated with **Stripe**.
+- **Dynamic Tournaments**: Discover, view, and interact with various tournaments and "Proving Camp" modules.
+- **Form Handling**: Robust and accessible form validation using React Hook Form.
+- **Responsive Design**: Fully mobile-responsive layouts tailored with Tailwind CSS.
+- **Animations & Micro-interactions**: Engaging UI animations powered by Framer Motion and Lottie.
+- **State Management**: Centralized application state using Redux Toolkit with `redux-persist` for retaining data across sessions.
+- **Toast Notifications**: Elegant and responsive user feedback using Sonner and SweetAlert2.
 
-## What you get
+## 🛠️ Technologies Used (What I Use in This Project)
 
-- Next 16 & React 19 stack
-- Redux Toolkit store setup at `src/redux/store.ts`
-- Provider wiring at `src/redux/Provider.tsx`
-- Example auth slice at `src/redux/features/auth/authSlice.ts`
-- Organized UI components under `src/components` and `src/components/ui` (shadcn-inspired)
-- Common components: Navbar, Footer, Loader, PageNotFound
-- Utility helper at `src/lib/utils.ts`
+This project leverages a modern web development stack to ensure high performance and maintainability:
 
-## Contract (small)
+- **Framework**: [Next.js 16](https://nextjs.org/) (App Router) & [React 19](https://react.dev/)
+- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/) & shadcn-inspired UI components
+- **State Management**: [Redux Toolkit](https://redux-toolkit.js.org/) & [redux-persist](https://github.com/rt2zz/redux-persist)
+- **Forms & Validation**: [React Hook Form](https://react-hook-form.com/)
+- **Payments**: [Stripe](https://stripe.com/) (`@stripe/react-stripe-js`, `@stripe/stripe-js`)
+- **Animations**: [Framer Motion](https://www.framer.com/motion/) & [dotLottie](https://lottiefiles.com/)
+- **UI Components**: [Radix UI](https://www.radix-ui.com/), [Lucide React](https://lucide.dev/) (Icons), [Swiper](https://swiperjs.com/) (Carousels)
+- **Notifications**: [Sonner](https://sonner.emilkowal.ski/) & [SweetAlert2](https://sweetalert2.github.io/)
 
-- Inputs: developer provides environment variables in `.env` and installs node deps.
-- Outputs: a running Next.js dev server (hot reload) and persisted Redux state (via `redux-persist`).
-- Success criteria: `npm run dev` starts without critical runtime errors; Redux store hydrates; UI components render.
+## 🚀 How to Run Locally
 
-## Edge cases to watch
+Follow these steps to set up and run the project on your local machine:
 
-- Missing `.env` values (app expects NEXT_PUBLIC_DEV_BASE_URL / NEXT_PUBLIC_BASE_URL)
-- Redux-persist storage mismatch or SSR hydration warnings — check `redux-persist` config if you see flashing state.
-- Next.js app dir behavior — pages and app router differences (this project uses the App Router).
-- Large bundles: check dependencies and tree-shake unused libs.
+### 1. Prerequisites
 
-## Folder structure explained
+Ensure you have [Node.js](https://nodejs.org/) (v18 or higher recommended) installed on your system.
 
-Top-level (relevant files/folders):
+### 2. Clone the Repository
 
-- `package.json` - scripts and dependencies
-- `.env` - public env vars (see below)
-- `src/app/` - Next.js App Router (layout, pages grouped in subfolders)
-  - `layout.tsx` - root layout
-  - `not-found.tsx` - 404 handling
-  - `(commonLayout)/` - example common layout and page
-  - `(authLayout)/` - placeholder for auth-scoped routes
+```bash
+git clone <your-repository-url>
+cd tournament-management-frontend
+```
 
-- `src/components/` - UI components
-  - `common/` - Navbar, Footer
-  - `home/` - Home page component
-  - `Others/` - Loader, PageNotFound components
-  - `ui/` - primitive UI components (button.tsx, card.tsx, sheet.tsx) — this mirrors the shadcn approach (design-system primitives)
+### 3. Install Dependencies
 
-- `src/lib/` - utilities (`utils.ts`)
-- `src/redux/` - Redux wiring
-  - `Provider.tsx` - React-Redux provider wrapper
-  - `store.ts` - store configuration
-  - `api/` - baseApi and testapi
-  - `features/` - slices (example: `auth/authSlice.ts`)
+Open your terminal in the project root and run:
 
-## package.json (high level)
+```bash
+npm install
+```
 
-Important dependencies from the project (exact versions available in `package.json`):
+### 4. Configure Environment Variables
 
-- `next`: 16.0.0
-- `react`: 19.2.0
-- `@reduxjs/toolkit`, `react-redux`: redux toolkit & bindings
-- `redux-persist`: state persistence
-- `tailwindcss` & `@tailwindcss/postcss` (Tailwind v4 listed)
-- UI helper libs: `lucide-react`, `clsx`, `class-variance-authority`, etc.
+Create a `.env` file in the root directory (you can use the provided `example.env` as a reference if available) and add the necessary environment variables:
 
-Dev dependencies include TypeScript and ESLint.
-
-## Environment
-
-Example `.env` values (present in repo):
-
-```text
+```env
 NEXT_PUBLIC_ENV=development
 NEXT_PUBLIC_PORT=5000
 NEXT_PUBLIC_BASE_URL=https://api.yourproductiondomain.com/api
 NEXT_PUBLIC_DEV_BASE_URL=http://localhost:5000/api
+# Add your Stripe public key if needed
+# NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_...
 ```
 
-Make sure to copy or edit `.env` for your local environment.
+### 5. Start the Development Server
 
-## Installation (Windows / PowerShell)
+Run the following command to start the app in development mode:
 
-Open PowerShell in the project root and run:
-
-```powershell
-# install dependencies
-npm install
-
-# run dev server
+```bash
 npm run dev
 ```
 
-The project exposes these scripts from `package.json`:
+### 6. View the Application
 
-- `dev` — next dev
-- `build` — next build
-- `start` — next start
-- `lint` — eslint (run `npm run lint` to see lint issues)
-
-## Adding / using shadcn-style components
-
-This repo already organizes UI primitives under `src/components/ui` following a shadcn-style approach (component-first primitives like `button.tsx`, `card.tsx`, `sheet.tsx`). If you want to adopt the official `shadcn/ui` setup, follow the upstream docs to install and configure it, or use the existing primitives as a pattern.
-
-Suggested steps to add the shadcn toolchain (optional):
-
-1. Install the `shadcn/ui` package or use their scaffolding tool per their docs.
-2. Generate components into `src/components/ui`.
-3. Wire theme / tailwind tokens as needed.
-
-## Notes on Redux setup
-
-- Store configuration lives in `src/redux/store.ts`.
-- A `Provider` wrapper exists at `src/redux/Provider.tsx` — use the wrapper in `_app` or root layout to provide the store.
-- `redux-persist` is installed to keep state across sessions; verify storage config for SSR correctness.
-
-## Development tips
-
-- If you get hydration warnings, ensure that persisted state is rehydrated client-side only (guard server vs client usage).
-- Use the `src/components/ui/*` primitives to keep the UI consistent.
-- Add tests around reducers and selectors for early feedback.
-
-## Quality gates (recommended checks)
-
-- Build: run `npm run build` locally to ensure production builds. (Not run here.)
-- Lint/Typecheck: run your linter and TypeScript check via your editor or `npm run lint` plus `tsc --noEmit`.
-- Tests: no tests included by default — consider adding a small Jest/Testing Library setup.
-
-## Try it — quick commands
-
-```powershell
-# clone the repo (change the URL if you forked or renamed the repository)
-git clone https://github.com/rakib-utsho/NextJs_REDUX_boilerplate.git
-cd NextJs_REDUX_boilerplate
-
-# install dependencies
-npm install
-
-# run dev server
-npm run dev
-```
-
-Open <http://localhost:3000> (or the port set in `NEXT_PUBLIC_PORT`) in your browser.
-
-## Contributing and next steps
-
-- Add more feature slices under `src/redux/features/` as your app grows.
-- Expand `src/components/ui` with shared primitives and document usage.
-- Add CI (GitHub Actions) to run lint/build on PRs.
-
-## Author
-
-Md. Rakibul Islam — Junior Frontend Developer
-
-## License
-
-This project is open-source and released under the MIT License. See the `LICENSE` file for the full text.
+Open your browser and navigate to [http://localhost:3000](http://localhost:3000) (or the port specified in your `.env` file) to see the application running.
 
 ---
+
+### Quality Checks & Building
+
+- To run linting: `npm run lint`
+- To build for production: `npm run build`
+- To start the production server: `npm run start`
+
+## 📄 License
+
+This project is open-source and available under the MIT License.
