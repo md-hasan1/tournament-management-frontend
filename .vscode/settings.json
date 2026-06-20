@@ -1,0 +1,16 @@
+{
+  "console-ninja.autoCommentSource": false,
+  "console-ninja.logPerformance": false,
+  "console-ninja.logProtocolMessages": false,
+  "console-ninja.printLogsIntoConsole": false,
+  "console-ninja.showNodataPlaceholder": false,
+  "console-ninja.suppressLogging": false,
+  "console-ninja.autoExpandLogs": false,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.formatOnSave": true
+}
